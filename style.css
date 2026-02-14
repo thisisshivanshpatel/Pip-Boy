@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+:root {
+  --bg-color: #0a0a0a;
+  --main-color: #14f600;
+  --dim-color: rgba(20, 246, 0, 0.3);
+  --glow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
+}
+
+body.amber-theme {
+  --main-color: #ffb642;
+  --dim-color: rgba(255, 182, 66, 0.3);
+  --glow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--main-color);
+  font-family: "Share Tech Mono", monospace;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents full page scroll */
+}
+
+/* Screen Casing */
+.screen-casing {
+  width: 95%;
+  max-width: 1500px;
+  height: 90vh; /* Fixed height relative to viewport */
+  background: #111;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow:
+    inset 0 0 40px #000,
+    0 0 20px rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+  position: relative;
+  box-sizing: border-box; /* Important calculation fix */
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 3px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--main-color);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  flex-shrink: 0; /* Prevents header from shrinking */
+}
+#datetime-box {
+  font-size: 1.5rem;
+  text-shadow: var(--glow);
+}
+.tab {
+  margin-left: 15px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.tab.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-shadow: var(--glow);
+}
+
+/* --- GRID LAYOUT --- */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  flex-grow: 1; /* Fills remaining height */
+  min-height: 0; /* CRITICAL: Allows grid to shrink to fit container */
+  overflow: hidden;
+}
+
+/* Left Column */
+.col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto; /* Allow scroll if stats are too tall */
+}
+
+/* Center Column */
+.col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+}
+.walker-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, var(--dim-color) 0%, transparent 60%);
+}
+.walker {
+  height: 90%; /* Scale relative to container height */
+  max-height: 500px;
+  object-fit: contain;
+  filter: sepia(100%) saturate(300%) hue-rotate(50deg)
+    drop-shadow(0 0 10px var(--main-color));
+}
+body.amber-theme .walker {
+  filter: sepia(100%) saturate(300%) hue-rotate(320deg)
+    drop-shadow(0 0 10px var(--main-color));
+}
+
+/* --- RIGHT COLUMN (THE FIX) --- */
+.col-right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0; /* Allows children to scroll */
+}
+
+/* Perks Section */
+.perks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+  flex-shrink: 0; /* Don't shrink perks */
+}
+.perk-header {
+  grid-column: span 2;
+  border-bottom: 1px solid var(--dim-color);
+  margin-bottom: 5px;
+  text-align: center;
+}
+.perk-btn {
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  text-decoration: none;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+.perk-btn:hover {
+  background: var(--main-color);
+  color: #000;
+  box-shadow: 0 0 10px var(--main-color);
+}
+
+/* Task List - FIXED SCROLLING */
+.quest-log {
+  border: 1px solid var(--main-color);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Take all remaining space */
+  min-height: 0; /* CRITICAL: Enables scrolling inside flex item */
+  margin-bottom: 5px;
+}
+
+.quest-header {
+  border-bottom: 1px dashed var(--main-color);
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.scroll-area {
+  flex-grow: 1;
+  overflow-y: auto; /* The scroll happens HERE */
+  margin-bottom: 10px;
+  padding-right: 5px;
+}
+
+/* Scrollbar Visibility */
+.scroll-area::-webkit-scrollbar {
+  width: 8px;
+  background: #000;
+}
+.scroll-area::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 4px;
+}
+
+#quest-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+#quest-list li {
+  cursor: pointer;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+#quest-list li:hover {
+  background: var(--dim-color);
+  color: #000;
+}
+#quest-list li.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+#quest-list li.done:before {
+  content: "☒ ";
+}
+
+#new-quest {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--dim-color);
+  color: var(--main-color);
+  font-family: inherit;
+  padding-top: 5px;
+  outline: none;
+  font-size: 1rem;
+  flex-shrink: 0; /* Input box stays visible */
+}
+
+/* Footer */
+.footer {
+  border-top: 2px solid var(--main-color);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* Stats Styling */
+.stat-box {
+  margin-bottom: 15px;
+}
+.label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+.bar-container {
+  height: 10px;
+  border: 1px solid var(--main-color);
+  padding: 2px;
+}
+.bar-fill {
+  height: 100%;
+  background-color: var(--main-color);
+  box-shadow: 0 0 5px var(--main-color);
+  transition: width 0.5s;
+}
+.value-text {
+  font-size: 1.1rem;
+  text-shadow: var(--glow);
+}
+.rad-meter-small {
+  font-size: 1.3rem;
+  border: 1px solid var(--main-color);
+  text-align: center;
+  padding: 5px;
+}
+.sub-text {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 5px;
+  opacity: 0.7;
+}
+
+button {
+  background: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  padding: 5px 10px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 0 5px var(--dim-color);
+}
+button:hover {
+  background: var(--main-color);
+  color: #000;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

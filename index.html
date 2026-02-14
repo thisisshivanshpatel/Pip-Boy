@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pip-Boy 3000 Mk VIII</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="crt-overlay"></div>
+    <div class="screen-casing">
+        <div class="screen">
+            <div class="header">
+                <div id="datetime-box">
+                    <span id="date">--.--.----</span>
+                    <span id="time">--:--</span>
+                </div>
+                <!-- <div class="tabs">
+                    <span class="tab active">SYS</span>
+                    <span class="tab">INV</span>
+                    <span class="tab">DATA</span>
+                    <span class="tab">MAP</span>
+                    <span class="tab">RADIO</span>
+                </div> -->
+            </div>
+
+            <div class="main-grid">
+
+                <div class="col-left">
+                    <div class="stat-box">
+                        <span class="label">CPU LOAD</span>
+                        <div class="bar-container">
+                            <div id="cpu-bar" class="bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">RAM USAGE</span>
+                        <div class="bar-container">
+                            <div id="ram-bar" class="bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box mt-20">
+                        <span class="label">FUSION CORE (BAT)</span>
+                        <span id="battery-level" class="value-text">--%</span>
+                        <div class="bar-container">
+                            <div id="battery-bar" class="bar-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box mt-20">
+                        <span class="label">NETWORK (DL)</span>
+                        <div class="rad-meter-small">
+                            <span id="net-speed">--</span> <span class="blink">Mbps</span>
+                        </div>
+                        <div class="sub-text">SIGNAL: <span id="net-type">CHECKING...</span></div>
+                    </div>
+                </div>
+
+                <div class="col-center">
+                    <div class="walker-container">
+                        <img id="gif-change" src="gifs/walk.gif" alt="Vault Boy" class="walker">
+                    </div>
+                </div>
+
+                <div class="col-right">
+                    <div class="perks-grid">
+                        <div class="perk-header">FAST TRAVEL</div>
+                        <a href="https://www.google.com" class="perk-btn">GGL</a>
+                        <a href="https://www.youtube.com" class="perk-btn">YT</a>
+                        <a href="https://www.reddit.com" class="perk-btn">RDT</a>
+                        <a href="https://github.com" class="perk-btn">GIT</a>
+                        <a href="https://chatgpt.com" class="perk-btn">AI</a>
+                        <a href="https://mail.google.com" class="perk-btn">MAIL</a>
+                    </div>
+
+                    <div class="quest-log">
+                        <div class="quest-header">CURRENT TASKS</div>
+                        <div class="scroll-area">
+                            <ul id="quest-list"></ul>
+                        </div>
+                        <input type="text" id="new-quest" placeholder="+ Add Task">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-info">
+                    <span id="status-message">SYSTEMS NORMAL</span>
+                </div>
+                <button id="color-toggle">TOGGLE PHOSPHOR</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

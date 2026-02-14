@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Pip-Boy Fallout theme",
+    "version": "1.0",
+    "description": "Fallout Pip-Boy inspired new tab with walking animation.",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "permissions": [
+        "storage",
+        "system.cpu",
+        "system.memory"
+    ]
+}
