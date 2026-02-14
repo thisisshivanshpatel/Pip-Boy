@@ -3,6 +3,11 @@
     "name": "Pip-Boy Fallout theme",
     "version": "1.0",
     "description": "Fallout Pip-Boy inspired new tab with walking animation.",
+    "icons": {
+        "16": "icons/pip-boy16.png",
+        "48": "icons/pip-boy48.png",
+        "128": "icons/pip-boy128.png"
+    },
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
