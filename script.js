@@ -2,7 +2,15 @@
 
 window.onload = () => {
   // ------ gif changer -----
-  const gifs = ["vault-boy.gif", "walk.gif"];
+  const gifs = [
+    "vault-boy.gif",
+    "walk.gif",
+    "detective.gif",
+    "radiation.gif",
+    "robot-mechanic.gif",
+    "take-this-gun.gif",
+    "tap-water.gif",
+  ];
   const gifIndex = Math.floor(Math.random() * gifs.length);
   document.getElementById("gif-change").src = `./gifs/${gifs[gifIndex]}`;
 
